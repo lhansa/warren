@@ -22,7 +22,7 @@ def prep_df(simbolo):
 # Amadeus AMS.MC
 # Yonghui 601933.SS
 
-simbolos = ['AMS.MC', '601933.SS']
+simbolos = ['AMS.MC', '601933.SS', 'CSCO']
 
 l_dfs = list(map(prep_df, simbolos))
 
