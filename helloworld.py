@@ -5,7 +5,7 @@ from datetime import date
 
 #%% Funciones guays
 def prep_df(simbolo, valores, start='2020-01-01'):
-    yf= YahooFinancials(simbolo)
+    yf = YahooFinancials(simbolo)
     data= yf.get_historical_price_data(
         start_date=start,
         end_date=date.today().strftime('%Y-%m-%d'), 
@@ -19,14 +19,11 @@ def prep_df(simbolo, valores, start='2020-01-01'):
     return df
 
 #%% Simbolos
-
-# Amadeus AMS.MC
-# Yonghui 601933.SS
-
 valores = {'Amadeus':'AMS.MC', 
            'Yonghui':'601933.SS', 
            'Cisco':'CSCO', 
            'Lenovo':'0992.HK'}
+
 #%% Preparación de parámetros
 simbolos = list(valores.values())
 l_valores = list(valores.keys())
