@@ -51,4 +51,19 @@ plt.axvline(x=pd.Timestamp('2021-03-01'),
             color='darkblue')
 plt.show()
 
+# TODO
+# - Estudiar dispersiones
+# - Estudiar variación desde declaración pandemia
+
 #%% Market Cap evolution
+df_cap_wide = df_master.reset_index(drop=False).pivot(
+    index='date', 
+    columns='ticker',
+    values='market_cap'
+)
+
+df_cap_wide.plot(subplots=True, kind='line')
+plt.axvline(x=pd.Timestamp('2021-03-01'),
+            ymax=max(df_master[precio_referencia]),
+            color='darkblue')
+plt.show()
