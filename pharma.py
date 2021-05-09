@@ -38,6 +38,8 @@ df_master = pd.concat(map(prep_evol_df, ticker_list))
 # Compute market capitalization
 df_master['market_cap'] = df_master[precio_referencia] * df_master['volume']
 
+# df_master.to_csv('output/pharma.csv')
+
 #%% Price evolution
 df_close_wide = df_master.reset_index(drop=False).pivot(
     index='date', 
@@ -45,15 +47,11 @@ df_close_wide = df_master.reset_index(drop=False).pivot(
     values=precio_referencia
 )
 
-df_close_wide.plot(subplots=True, kind='line')
-plt.axvline(x=pd.Timestamp('2021-03-01'),
-            ymax=max(df_master[precio_referencia]),
-            color='darkblue')
+# First subplot try
+axes = df_close_wide.plot(subplots=True)
+for ax in axes.flat:
+    ax.axvline(x=pd.Timestamp('2020-10-16'), color='darkblue')
 plt.show()
-
-# TODO
-# - Estudiar dispersiones
-# - Estudiar variación desde declaración pandemia
 
 #%% Market Cap evolution
 df_cap_wide = df_master.reset_index(drop=False).pivot(
@@ -61,9 +59,3 @@ df_cap_wide = df_master.reset_index(drop=False).pivot(
     columns='ticker',
     values='market_cap'
 )
-
-df_cap_wide.plot(subplots=True, kind='line')
-plt.axvline(x=pd.Timestamp('2021-03-01'),
-            ymax=max(df_master[precio_referencia]),
-            color='darkblue')
-plt.show()
