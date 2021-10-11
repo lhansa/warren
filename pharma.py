@@ -50,9 +50,9 @@ df_close_wide = df_master.reset_index(drop=False).pivot(
 # First subplot try
 axes = df_close_wide.plot(subplots=True)
 for ax in axes.flat:
-    ax.axvline(x=pd.Timestamp('2020-10-16'), color='darkblue')
-# plt.show()
-plt.savefig('plots/pharma_evol.png')
+    ax.axvline(x=pd.Timestamp('2020-03-11'), color='darkblue')
+plt.show()
+# plt.savefig('plots/pharma_evol.png')
 
 #%% Market Cap evolution
 df_cap_wide = df_master.reset_index(drop=False).pivot(
